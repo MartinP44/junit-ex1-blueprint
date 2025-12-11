@@ -15,5 +15,15 @@ public class StringValidator {
             throw new IllegalArgumentException("Input cannot be empty.");
         }
     }
+
+
+    public boolean isPalindrome(String input) {
+        if (input == null) {
+            return false;
+        }
+        
+        String reverseText = new StringBuilder(input).reverse().toString();
+        return input.equals(reverseText);
+    }
     
 }

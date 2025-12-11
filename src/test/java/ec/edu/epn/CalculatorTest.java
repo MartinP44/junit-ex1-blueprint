@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -84,7 +85,11 @@ public class CalculatorTest {
     void divide_PositiveNumbers_ReturnCorrectQuotient(){
         double result = calculator.divide(10,4);
         // Se agrega un delta = 0.0001 para comparacion de numeros decimales, message en caso de fallo
-        assertEquals(2.5, result, 0.0001, "10 dividido entre 4 deberia ser 2.5");
+        assertAll(
+            () -> assertTrue(result>0),
+            () -> assertEquals(2.5, result, 0.0001, "10 dividido entre 4 deberia ser 2.5")
+        );
+        
     }
 
 
